@@ -32,19 +32,42 @@ export const GlobalProvider = ({ children }) => {
 			});
 		}
 	}
-	function deleteTrans(id) {
-		console.log('fired!');
-		dispatch({
-			type: 'DELETE_TRANSACTION',
-			payload: id,
-		});
+
+	async function deleteTrans(id) {
+		try {
+			await axios.delete(`api/v1/transactions/${id}`);
+			dispatch({
+				type: 'DELETE_TRANSACTION',
+				payload: id,
+			});
+		} catch (err) {
+			dispatch({
+				type: 'TRANSACTION_ERROR',
+				payload: err.response.data.error,
+			});
+		}
 	}
 
-	function addTrans(trans) {
-		dispatch({
-			type: 'ADD_TRANSACTION',
-			payload: trans,
-		});
+	async function addTrans(trans) {
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+
+		try {
+			const res = await axios.post('/api/v1/transactions', trans, config);
+
+			dispatch({
+				type: 'ADD_TRANSACTION',
+				payload: res.data.data,
+			});
+		} catch (err) {
+			dispatch({
+				type: 'TRANSACTION_ERROR',
+				payload: err.response.data.error,
+			});
+		}
 	}
 
 	function reset() {

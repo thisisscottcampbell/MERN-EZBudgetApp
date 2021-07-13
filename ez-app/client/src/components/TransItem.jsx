@@ -12,7 +12,7 @@ const TransItem = ({ trans }) => {
 				<span>
 					{sign}${Math.abs(trans.amount)}
 				</span>
-				<button onClick={() => deleteTrans(trans.id)} className="delete-btn">
+				<button onClick={() => deleteTrans(trans._id)} className="delete-btn">
 					x
 				</button>
 			</li>
