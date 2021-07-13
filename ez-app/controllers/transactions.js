@@ -1,5 +1,18 @@
 const getTransactions = (req, res, next) => {
-	res.send('GET transactions');
+  try {
+    const transactions = await Transaction.find();
+
+    return res.status(200).json({
+      success: true,
+      count: transactions.length,
+      data: transactions
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: 'Server Error'
+    });
+  }
 };
 
 const addTransaction = (req, res, next) => {
