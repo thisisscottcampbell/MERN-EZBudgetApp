@@ -6,7 +6,7 @@ const AddTrans = () => {
 	const [text, setText] = useState('');
 	const [amount, setAmount] = useState('');
 
-	const { addTrans } = useContext(GlobalContext);
+	const { addTrans, reset } = useContext(GlobalContext);
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -49,6 +49,9 @@ const AddTrans = () => {
 				</div>
 				<button className="btn">Add transaction</button>
 			</form>
+			<button onClick={reset} className="btn-reset">
+				Reset
+			</button>
 		</>
 	);
 };

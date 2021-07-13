@@ -3,7 +3,6 @@ import { GlobalContext } from '../context/State';
 
 const TransItem = ({ trans }) => {
 	const { deleteTrans } = useContext(GlobalContext);
-	console.log(deleteTrans);
 	const sign = trans.amount < 0 ? '-' : '+';
 
 	return (

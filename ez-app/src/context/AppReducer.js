@@ -13,6 +13,12 @@ export default (state, action) => {
 				...state,
 				transactions: [action.payload, ...state.transactions],
 			};
+
+		case 'RESET_BUDGET':
+			return {
+				...state,
+				transactions: action.payload,
+			};
 		default:
 			return state;
 	}

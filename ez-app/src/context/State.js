@@ -3,13 +3,7 @@ import AppReducer from './AppReducer';
 
 //init state
 const initState = {
-	transactions: [
-		{ id: 1, text: 'Pizza', amount: -50 },
-		{ id: 2, text: 'Chinese', amount: -40 },
-		{ id: 3, text: 'Thai', amount: -60 },
-		{ id: 4, text: 'Mexican', amount: -30 },
-		{ id: 5, text: 'Lotto', amount: 500 },
-	],
+	transactions: [],
 };
 
 //create context
@@ -35,9 +29,16 @@ export const GlobalProvider = ({ children }) => {
 		});
 	}
 
+	function reset() {
+		dispatch({
+			type: 'RESET_BUDGET',
+			payload: initState.transactions,
+		});
+	}
+
 	return (
 		<GlobalContext.Provider
-			value={{ transactions: state.transactions, deleteTrans, addTrans }}
+			value={{ transactions: state.transactions, deleteTrans, addTrans, reset }}
 		>
 			{children}
 		</GlobalContext.Provider>
