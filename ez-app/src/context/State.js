@@ -23,8 +23,15 @@ export const GlobalProvider = ({ children }) => {
 	function deleteTrans(id) {
 		console.log('fired!');
 		dispatch({
-			type: 'DELETE TRANSACTION',
+			type: 'DELETE_TRANSACTION',
 			payload: id,
+		});
+	}
+
+	function addTrans(trans) {
+		dispatch({
+			type: 'ADD_TRANSACTION',
+			payload: trans,
 		});
 	}
 
