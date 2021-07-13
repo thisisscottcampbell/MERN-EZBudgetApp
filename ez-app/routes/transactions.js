@@ -4,14 +4,9 @@ const {
 	getTransactions,
 	addTransaction,
 	deleteTransaction,
-	resetTransactions,
 } = require('../controllers/transactions');
 
-router
-	.route('/')
-	.get(getTransactions)
-	.post(addTransaction)
-	.delete(resetTransactions);
+router.route('/').get(getTransactions).post(addTransaction);
 
 router.route('/:id').delete(deleteTransaction);
 

@@ -111,7 +111,7 @@ input[type='number'] {
 
 .btn-reset {
 	cursor: pointer;
-	background-color: turquoise;
+	background-color: coral;
 	box-shadow: var(--box-shadow);
 	color: #fff;
 	border: 0;
