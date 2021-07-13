@@ -1,19 +1,17 @@
 import React, { useContext } from 'react';
+import Trans from './Trans'
 import { GlobalContext } from '../context/State';
 
 const TransList = () => {
 
     const { transactions } = useContext(GlobalContext);
 
-    const renderTrans = transactions.map(trans => (
-        <li className="minus">
-          {trans.text} <span>-$400</span><button className="delete-btn">x</button>
-        </li>
-    ))
+    const renderTrans = transactions.map(trans => <Trans key={trans.id} trans={trans} />)
+
     return (
         <div>
             <h3>History</h3>
-            <ul id="list" className="list">
+            <ul className="list">
                 {renderTrans}
             </ul>
         </div>
